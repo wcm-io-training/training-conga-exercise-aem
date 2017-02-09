@@ -18,7 +18,7 @@
 
   <properties>
     <config.environment>development</config.environment>
-    <wcm-io-samples-version>1.0.0-SNAPSHOT</wcm-io-samples-version>
+    <wcm-io-samples-version>1.0.0</wcm-io-samples-version>
   </properties>
 
   <dependencies>
@@ -32,14 +32,14 @@
 
     <!-- Application packages -->
     <dependency>
-      <groupId>io.wcm</groupId>
+      <groupId>io.wcm.samples</groupId>
       <artifactId>io.wcm.samples.complete</artifactId>
       <version>${wcm-io-samples-version}</version>
       <type>zip</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>io.wcm</groupId>
+      <groupId>io.wcm.samples</groupId>
       <artifactId>io.wcm.samples.sample-content</artifactId>
       <version>${wcm-io-samples-version}</version>
       <type>zip</type>
