@@ -1,0 +1,89 @@
+nodes:
+
+- node: aem-author
+  roles:
+  - role: aem-cms
+    variant: aem-author
+  - role: wcm-io-samples-cms
+    variant: aem-author
+  - role: wcm-io-samples-cms-app
+  config:
+    replication.author.publishTargets:
+    - name: publish1
+      url: http://localhost:4503
+      transportUser: admin
+      # Has to be encrypted with the correct key, see http://www.wemblog.com/2012/03/how-to-use-crypto-support-in-cq55.html
+      transportPassword: "{898e59830fb757c65409ad02f97a7c56a1eb235fbd7712434afbf9c0b224515d9fbfd16f35d3d3b81ecca341630c0b9a}"
+
+- node: aem-publish
+  roles:
+  - role: aem-cms
+    variant: aem-publish
+  - role: wcm-io-samples-cms
+    variant: aem-publish
+  - role: wcm-io-samples-cms-app
+  config:
+    replication.publish.flushTarget:
+      name: dispatcher1
+      url: https://www.wcmio-sample.de
+
+- node: webserver
+  roles:
+  - role: aem-dispatcher-common
+  - role: aem-dispatcher-author
+    variant: ssl
+    config:
+      cmsAuthorHostname: cms.wcmio-sample.de
+      dispatcher:
+        cacheRootPath: /var/cache/author1
+        renderInstance:
+          host: localhost
+          port: 4502
+        allowAdminAccessFrom: 80.150.190.128/26 87.193.246.218
+  - role: aem-dispatcher-publish
+    variant: no-ssl+ssl
+    config:
+      dispatcher:
+        cacheRootPath: /var/cache/publish1
+        statFilesLevel: 3
+        renderInstance:
+          host: localhost
+          port: 4503
+        allowAdminAccessFrom: 80.150.190.128/26
+
+config:
+  contentPackage.group: "wcm-io-samples"
+  jvm:
+    path: /usr/lib/jvm/jdk-8-oracle-x64
+    heapspace:
+      min: 3072m
+      max: 3072m
+    timezone: Europe/Berlin
+  dispatcher:
+    moduleFile: /usr/lib/apache2/modules/mod_dispatcher.so
+    allowFlushFrom: 127.0.0.1
+    allowFlushFromHost: localhost
+    sslCertificateFile: /etc/ssl/certs/wcmio-sample.de.crt
+    sslCertificateKeyFile: /etc/ssl/private/wcmio-sample.de.key
+    sslCACertificatePath: /etc/ssl/certs
+    sslCACertificateFile: /etc/ssl/certs/GeoTrust_SSL_CA_G2_Cert_bundle.pem
+    enforceSsl: true
+  sampleContent: false
+
+  # Force-Override site URLs in all site configs on the system
+  configOverrides:
+    "/content/wcm-io-samples:locked":
+      siteUrl: https://www.wcmio-sample.de
+      siteUrlSecure: https://www.wcmio-sample.de
+      siteUrlAuthor: https://cms.wcmio-sample.de
+
+
+tenants:
+
+- tenant: www.wcmio-sample.de
+  config:
+    serverAliasNames:
+    - wcmio-sample.de
+    slingMappingPath: /content/wcm-io-samples
+    dispatcher:
+      rootRedirectUrl: /en.html
