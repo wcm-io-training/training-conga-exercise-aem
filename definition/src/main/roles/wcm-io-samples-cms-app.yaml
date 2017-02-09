@@ -2,18 +2,6 @@
 
 files:
 
-# Hotfix packages
-- url: mvn:de.provision.aem.hotfix.62/hotfix-12785/7.0/zip
-  dir: packages
-  modelOptions:
-    delayAfterInstallSec: 60
-    force: false
-- url: mvn:de.provision.aem.hotfix.62/AEM-6.2-Service-Pack-1/1.0.0/zip
-  dir: packages
-  modelOptions:
-    delayAfterInstallSec: 60
-    force: false
-
 # Application package
 - url: mvn:io.wcm/io.wcm.samples.complete//zip
   dir: packages
