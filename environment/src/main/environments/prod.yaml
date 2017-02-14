@@ -6,7 +6,6 @@ nodes:
     variant: aem-author
   - role: wcm-io-samples-cms
     variant: aem-author
-  - role: wcm-io-samples-cms-app
   config:
     replication.author.publishTargets:
     - name: publish1
@@ -21,7 +20,6 @@ nodes:
     variant: aem-publish
   - role: wcm-io-samples-cms
     variant: aem-publish
-  - role: wcm-io-samples-cms-app
   config:
     replication.publish.flushTarget:
       name: dispatcher1
@@ -68,7 +66,7 @@ config:
     sslCACertificatePath: /etc/ssl/certs
     sslCACertificateFile: /etc/ssl/certs/GeoTrust_SSL_CA_G2_Cert_bundle.pem
     enforceSsl: true
-  sampleContent: false
+  app.sampleContent: false
 
   # Force-Override site URLs in all site configs on the system
   configOverrides:
