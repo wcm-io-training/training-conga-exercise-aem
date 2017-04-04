@@ -70,10 +70,10 @@ config:
 
   # Force-Override site URLs in all site configs on the system
   configOverrides:
-    "/content/wcm-io-samples:locked":
-      siteUrl: https://www.wcmio-sample.de
-      siteUrlSecure: https://www.wcmio-sample.de
-      siteUrlAuthor: https://cms.wcmio-sample.de
+    "/content/wcm-io-samples":
+    - io.wcm.handler.url.SiteConfig/siteUrl="https://www.wcmio-sample.de"
+    - io.wcm.handler.url.SiteConfig/siteUrlSecure="https://www.wcmio-sample.de"
+    - io.wcm.handler.url.SiteConfig/siteUrlAuthor="https://cms.wcmio-sample.de"
 
 
 tenants:
