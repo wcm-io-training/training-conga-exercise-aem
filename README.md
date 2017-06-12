@@ -7,6 +7,12 @@ This training projects targets the following training modules:
 * [PVTRAIN-146 AEM Configuration with CONGA](http://training.wcm.io/conga/PVTRAIN-146-AEM-Configuration-with-CONGA.html)
 
 
+Requirements
+------------
+
+* AEM 6.3 author instance running on port 4502
+
+
 Exercises
 ---------
 
