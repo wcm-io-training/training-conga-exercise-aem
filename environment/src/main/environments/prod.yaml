@@ -27,27 +27,32 @@ nodes:
 
 - node: webserver
   roles:
-  - role: aem-dispatcher-common
-  - role: aem-dispatcher-author
-    variant: ssl
+  - role: aem-dispatcher
+    variants:
+    - aem-author
+    - ssl
     config:
-      cmsAuthorHostname: cms.wcmio-sample.de
+      httpd.serverName: cms.wcmio-sample.de
+      httpd.accessRestriction.adminAccessFromIp: 80.150.190.128/26 87.193.246.218
       dispatcher:
-        cacheRootPath: /var/cache/author1
+        cache:
+          rootPath: /var/cache/author1
         renderInstance:
           host: localhost
           port: 4502
-        allowAdminAccessFrom: 80.150.190.128/26 87.193.246.218
-  - role: aem-dispatcher-publish
-    variant: no-ssl+ssl
+  - role: aem-dispatcher
+    variants:
+    - aem-publish
+    - ssl
     config:
+      httpd.accessRestriction.adminAccessFromIp: 80.150.190.128/26
       dispatcher:
-        cacheRootPath: /var/cache/publish1
-        statFilesLevel: 3
+        cache:
+          rootPath: /var/cache/publish1
+          statFilesLevel: 3
         renderInstance:
           host: localhost
           port: 4503
-        allowAdminAccessFrom: 80.150.190.128/26
 
 config:
   contentPackage.group: "wcm-io-samples"
@@ -57,15 +62,16 @@ config:
       min: 3072m
       max: 3072m
     timezone: Europe/Berlin
-  dispatcher:
-    moduleFile: /usr/lib/apache2/modules/mod_dispatcher.so
-    allowFlushFrom: 127.0.0.1
-    allowFlushFromHost: localhost
-    sslCertificateFile: /etc/ssl/certs/wcmio-sample.de.crt
-    sslCertificateKeyFile: /etc/ssl/private/wcmio-sample.de.key
-    sslCACertificatePath: /etc/ssl/certs
-    sslCACertificateFile: /etc/ssl/certs/GeoTrust_SSL_CA_G2_Cert_bundle.pem
-    enforceSsl: true
+  httpd:
+    accessRestriction:
+      dispatcherFlushFromHost: localhost
+      dispatcherFlushFromIp: 127.0.0.1
+    ssl:
+      enforce: true
+      certificateFile: /etc/ssl/certs/wcmio-sample.de.crt
+      certificateKeyFile: /etc/ssl/private/wcmio-sample.de.key
+      caCertificatePath: /etc/ssl/certs
+      caCertificateFile: /etc/ssl/certs/GeoTrust_SSL_CA_G2_Cert_bundle.pem
   app.sampleContent: false
 
   # Force-Override site URLs in all site configs on the system
@@ -80,8 +86,8 @@ tenants:
 
 - tenant: www.wcmio-sample.de
   config:
-    serverAliasNames:
-    - wcmio-sample.de
-    slingMappingPath: /content/wcm-io-samples
-    dispatcher:
-      rootRedirectUrl: /en.html
+    httpd:
+      serverAliasNames:
+      - wcmio-sample.de
+      rootRedirect.url: /en.html
+    sling.mapping.rootPath: /content/wcm-io-samples
