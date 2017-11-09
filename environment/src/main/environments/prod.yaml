@@ -2,8 +2,6 @@ nodes:
 
 - node: aem-author
   roles:
-  - role: aem-cms
-    variant: aem-author
   - role: wcm-io-samples-cms
     variant: aem-author
   config:
@@ -16,8 +14,6 @@ nodes:
 
 - node: aem-publish
   roles:
-  - role: aem-cms
-    variant: aem-publish
   - role: wcm-io-samples-cms
     variant: aem-publish
   config:

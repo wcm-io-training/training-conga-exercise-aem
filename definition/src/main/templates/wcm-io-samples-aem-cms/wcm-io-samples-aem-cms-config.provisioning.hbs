@@ -25,6 +25,15 @@
     org.apache.sling.commons.log.names=["io.wcm"]
     org.apache.sling.commons.log.pattern="{0,date,dd.MM.yyyy\ HH:mm:ss.SSS}\ *{4}*\ [{2}]\ {3}\ {5}"
   
+  # Update CAConfig config on AEM 6.3
+  org.apache.sling.caconfig.resource.impl.def.DefaultConfigurationResourceResolvingStrategy
+    fallbackPaths=["/conf/global","/apps","/libs"]
+    configCollectionInheritancePropertyNames=["jcr:content/sling:configCollectionInherit", "jcr:content/mergeList","mergeList"]
+
+  org.apache.sling.caconfig.management.impl.ConfigurationManagementSettingsImpl
+    ignorePropertyNameRegex=["^(jcr|cq):.+$"]
+    configCollectionPropertiesResourceNames=["jcr:content","."]
+
   # Context path strategy
   io.wcm.caconfig.extensions.contextpath.impl.RootTemplateContextPathStrategy-wcmio-samples
     templatePaths=["/apps/wcm-io-samples/sample-app/templates/content/homepage"]
@@ -39,20 +48,6 @@
     configPageTemplate="/apps/wcm-io-samples/sample-app/templates/admin/configEditor"
     structurePageTemplate="/apps/wcm-io-samples/sample-app/templates/admin/structureElement"
 
-{{#if configOverrides}}
-  # Override site configuration
-  org.apache.sling.caconfig.impl.override.OsgiConfigurationOverrideProvider-override
-    enabled=B"true"
-    description="Site URL Config Overrides"
-    overrides=[
-      {{~#each configOverrides ~}}
-        {{~#each this ~}}
-          "[{{../@key}}]{{this}}",
-        {{~/each ~}}
-      {{~/each ~}}
-    ]
-{{/if}}
-
 
 
 [configurations runModes=author]
@@ -61,10 +56,6 @@
   com.day.cq.commons.servlets.RootMappingServlet
     rootmapping.target="/sites.html"
 
-  # Set TouchUI as primary authoring UI
-  com.day.cq.wcm.core.impl.AuthoringUIModeServiceImpl
-    authoringUIModeService.default="TOUCH"
-  
   # Define service user for wcm.io Media Handler
   org.apache.sling.serviceusermapping.impl.ServiceUserMapperImpl.amended-wcmio-samples
     user.mapping=["io.wcm.handler.media\=wcmioDamSystemUser"]
@@ -72,6 +63,7 @@
   # Configure Responsive Preview Mode
   io.wcm.wcm.ui.granite.emulator.impl.EmulatorProviderImpl-wcmio-samples
     templatePathPatterns=["^/apps/wcm-io-samples/sample-app/.*$"]
+
 
 
 [configurations runModes=publish]
