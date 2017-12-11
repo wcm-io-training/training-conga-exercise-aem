@@ -17,7 +17,6 @@
   <name>CONGA Training: AEM Definitions</name>
 
   <properties>
-    <config.environment>development</config.environment>
     <wcm-io-samples-version>1.1.0</wcm-io-samples-version>
   </properties>
 
@@ -66,9 +65,6 @@
             </goals>
             <configuration>
               <environmentDir>${basedir}/src/main/dev-environments</environmentDir>
-              <environments>
-                <environment>${config.environment}</environment>
-              </environments>
             </configuration>
           </execution>
 
@@ -77,25 +73,5 @@
       
     </plugins>
   </build>
-
-  <profiles>
-
-    <!-- Deploy AEM packages from generated configuration to AEM instance -->
-    <profile>
-      <id>deploy-packages</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>io.wcm.devops.conga.plugins</groupId>
-            <artifactId>conga-aem-maven-plugin</artifactId>
-            <configuration>
-              <nodeDirectory>target/configuration/${config.environment}/aem-author</nodeDirectory>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-
-  </profiles>
 
 </project>
