@@ -17,3 +17,15 @@ Exercises
 ---------
 
 * [PVTRAIN-148-04 Configure AEM with CONGA](http://training.wcm.io/conga/PVTRAIN-148-04-Configure-AEM-with-CONGA.html)
+
+
+Maven Settings
+--------------
+
+To build the project you have to configure additional [Maven Repositories](http://wcm.io/maven.html) in your settings.xml.
+
+Alternatively you can build the project by specifying:
+
+```
+mvn --settings .travis.maven-settings.xml clean install
+```
