@@ -1,6 +1,6 @@
 # Project-specific AEM configuration
 
-# Inherit default AEM functionality from "AEM Definitions", see http://devops.wcm.io/conga/definitions/aem/
+# Inherit default AEM functionality from "AEM Definitions", see https://devops.wcm.io/conga/definitions/aem/
 inherits:
 - role: aem-cms
 
