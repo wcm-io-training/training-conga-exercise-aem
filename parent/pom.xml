@@ -6,7 +6,7 @@
   <parent>
     <groupId>io.wcm.maven</groupId>
     <artifactId>io.wcm.maven.aem-global-parent</artifactId>
-    <version>1.2.34</version>
+    <version>1.3.0</version>
     <relativePath/>
   </parent>
 
@@ -23,6 +23,9 @@
     <java.version>1.8</java.version>
     <build.compiler.release>8</build.compiler.release>
 
+    <!-- Sample application version -->
+    <wcm-io-samples-version>1.3.0</wcm-io-samples-version>
+
   </properties>
   
   <dependencyManagement>
@@ -32,6 +35,20 @@
         <groupId>io.wcm.devops.conga.definitions</groupId>
         <artifactId>io.wcm.devops.conga.definitions.aem</artifactId>
         <version>1.5.4</version>
+      </dependency>
+
+      <!-- Application packages -->
+      <dependency>
+        <groupId>io.wcm.samples</groupId>
+        <artifactId>io.wcm.samples.complete</artifactId>
+        <version>${wcm-io-samples-version}</version>
+        <type>zip</type>
+      </dependency>
+      <dependency>
+        <groupId>io.wcm.samples</groupId>
+        <artifactId>io.wcm.samples.sample-content</artifactId>
+        <version>${wcm-io-samples-version}</version>
+        <type>zip</type>
       </dependency>
 
     </dependencies>

@@ -16,10 +16,6 @@
 
   <name>CONGA Training: AEM Definitions</name>
 
-  <properties>
-    <wcm-io-samples-version>1.2.2</wcm-io-samples-version>
-  </properties>
-
   <dependencies>
 
     <!-- Use generic AEM CMS and Dispatcher roles -->
@@ -33,14 +29,12 @@
     <dependency>
       <groupId>io.wcm.samples</groupId>
       <artifactId>io.wcm.samples.complete</artifactId>
-      <version>${wcm-io-samples-version}</version>
       <type>zip</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>io.wcm.samples</groupId>
       <artifactId>io.wcm.samples.sample-content</artifactId>
-      <version>${wcm-io-samples-version}</version>
       <type>zip</type>
       <scope>compile</scope>
     </dependency>
