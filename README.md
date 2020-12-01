@@ -1,6 +1,6 @@
 CONGA Training: AEM
 ===================
-[![Build Status](https://travis-ci.org/wcm-io-training/training-conga-exercise-aem.png?branch=master)](https://travis-ci.org/wcm-io-training/training-conga-exercise-aem)
+[![Build Status](https://travis-ci.com/wcm-io-training/training-conga-exercise-aem.png?branch=master)](https://travis-ci.com/wcm-io-training/training-conga-exercise-aem)
 
 This training projects targets the following training modules:
 
