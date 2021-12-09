@@ -10,7 +10,7 @@ This training projects targets the following training modules:
 Requirements
 ------------
 
-* AEM 6.5 author instance running on port 4502
+* AEMaaCS SDK author instance running on port 4502
 
 
 Exercises
