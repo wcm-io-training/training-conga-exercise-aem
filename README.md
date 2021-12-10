@@ -4,7 +4,7 @@ CONGA Training: AEM
 
 This training projects targets the following training modules:
 
-* [PVTRAIN-146 AEM Configuration with CONGA](https://training.wcm.io/conga/PVTRAIN-146-AEM-Configuration-with-CONGA.html)
+* [DATM-58 AEM Configuration with CONGA](https://training.wcm.io/conga/DATM-58-AEM-Configuration-with-CONGA.html)
 
 
 Requirements
@@ -16,7 +16,7 @@ Requirements
 Exercises
 ---------
 
-* [PVTRAIN-148-04 Configure AEM with CONGA](https://training.wcm.io/conga/PVTRAIN-148-04-Configure-AEM-with-CONGA.html)
+* [DATM-59-04 Configure AEM with CONGA](https://training.wcm.io/conga/DATM-59-04-Configure-AEM-with-CONGA.html)
 
 
 Maven Settings
