@@ -1,6 +1,6 @@
 CONGA Training: AEM
 ===================
-[![Build](https://github.com/wcm-io-training/training-conga-exercise-aem/workflows/Build/badge.svg?branch=master)](https://github.com/wcm-io-training/training-conga-exercise-aem/actions?query=workflow%3ABuild+branch%3Amaster)
+[![Build](https://github.com/wcm-io-training/training-conga-exercise-aem/actions/workflows/maven-build.yml/badge.svg?branch=master)](https://github.com/wcm-io-training/training-conga-exercise-aem/actions?query=workflow%3ABuild+branch%3Amaster)
 
 This training projects targets the following training modules:
 
